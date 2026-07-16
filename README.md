@@ -5,7 +5,7 @@
 [![license](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://github.com/pepa65/batlimit/blob/main/LICENSE)
 [![downloads](https://img.shields.io/crates/d/batlimit.svg)](https://crates.io/crates/batlimit)
 
-# batlimit 0.11.29
+# batlimit 0.12.0
 **Set battery charge limit on supported laptops on Linux with CLI**
 
 It is now widely acknowledged that the life span of Li-ion batteries is extended by not charging them to the max.
