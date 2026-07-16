@@ -218,21 +218,41 @@ impl Battery {
 			("technology", "Battery Type", ""),
 			("status", "Charge Status", ""),
 			("capacity_level", "Battery State", ""),
-			("charge_full", "Current Max. Capacity", " μAh"),
-			("power_now", "Current Max. Capacity", " μAh"),
-			("energy_now", "Current Max. Capacity", " μAh"),
-			("energy_full", "Current Max. Capacity", " μAh"),
-			("charge_full_design", "Design Max. Capacity", " μAh"),
-			("energy_full_design", "Design Max. Capacity", " μAh"),
-			("voltage_min_design", "Min. Voltage", " μV"),
-			("voltage_now", "Current Voltage", " μV"),
+			("charge_full", "Current Max. Capacity", " Ah"),
+			("power_now", "Current Max. Capacity", " Ah"),
+			("energy_now", "Current Max. Capacity", " Ah"),
+			("energy_full", "Current Max. Capacity", " Ah"),
+			("charge_full_design", "Design Max. Capacity", " Ah"),
+			("energy_full_design", "Design Max. Capacity", " Ah"),
+			("voltage_min_design", "Min. Voltage", " V"),
+			("voltage_now", "Current Voltage", " V"),
 			("capacity", "Charge Level", "%"),
 			(STARTKEY, "Charge Start", "%"),
 			(LIMITKEY, "Charge Limit", "%"),
 		];
 		let info = INFO
 			.iter()
-			.filter_map(|v| fs::read_to_string(self.bat_path.join(v.0)).ok().map(|value| (v.1, value.trim().to_owned(), v.2)))
+			.filter_map(|v| {
+				fs::read_to_string(self.bat_path.join(v.0)).ok().map(|value| {
+					let value = if v.2.len() > 2 {
+						let mut val = value.trim().to_owned();
+						while val.len() < 7 {
+							val.insert(0, '0');
+						}
+						val.insert(val.len() - 6, '.');
+						while val.ends_with('0') {
+							val.pop();
+						}
+						if val.ends_with('.') {
+							val.pop();
+						}
+						val
+					} else {
+						value.trim().to_owned()
+					};
+					(v.1, value, v.2)
+				})
+			})
 			.collect::<Vec<_>>();
 		let pad_size = info.iter().map(|(file, _, _)| file.len()).max().unwrap_or(0);
 		let info_string = info

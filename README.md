@@ -123,10 +123,10 @@ Model                  A32-K55
 Battery Type           Li-ion
 Charge Status          Not charging
 Battery State          Normal
-Current Max. Capacity  2660000 μAh
-Design Max. Capacity   4110000 μAh
-Min. Voltage           11679000 μV
-Current Voltage        11946000 μV
+Current Max. Capacity  2.66 Ah
+Design Max. Capacity   4.11 Ah
+Min. Voltage           11.679 V
+Current Voltage        11.946 V
 Charge Level           81%
 Charge Limit           80%
 Persist state          80%
