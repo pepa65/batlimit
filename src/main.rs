@@ -155,7 +155,7 @@ impl Battery {
 		let mut values = HashMap::new();
 		let startval = limit - INTERVAL;
 		let startkey = self.bat_path.join(STARTKEY).display().to_string();
-		let startstr = format!("echo {} >{}; ", startval.to_string().as_str(), &startkey);
+		let startstr = format!("echo {} >{}; ", startval.to_string().as_str(), startkey);
 		if fs::exists(self.bat_path.join(STARTKEY)).unwrap() {
 			values.insert("start", startstr.as_str());
 		} else {
