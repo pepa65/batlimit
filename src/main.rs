@@ -234,7 +234,7 @@ impl Battery {
 			.iter()
 			.filter_map(|v| {
 				fs::read_to_string(self.bat_path.join(v.0)).ok().map(|value| {
-					let value = if v.2.len() > 2 {
+					let value = if v.2.starts_with(' ') {
 						let mut val = value.trim().to_owned();
 						while val.len() < 7 {
 							val.insert(0, '0');
@@ -289,8 +289,8 @@ impl Battery {
 			};
 		}
 		if !cur.is_empty() && !des.is_empty() {
-			let health = 100 * cur.parse::<u32>().unwrap_or(0) / des.parse::<u32>().unwrap_or(1);
-			println!("{NORMAL}{healthstr:<pad_size$}  {VALUE}{}%", health.clamp(0, 100));
+			let health = 100.0 * cur.parse::<f32>().unwrap_or(0.0) / des.parse::<f32>().unwrap_or(1.0);
+			println!("{NORMAL}{healthstr:<pad_size$}  {VALUE}{:.0}%", health.clamp(0.0, 100.0));
 		} else {
 			println!("{NORMAL}{healthstr:<pad_size$}  {VALUE}NO INFO");
 		};
