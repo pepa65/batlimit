@@ -266,7 +266,7 @@ impl Battery {
 		if !info_string.is_empty() {
 			println!("{info_string}");
 		};
-		let persiststr = "Persist state";
+		let persiststr = "Persist State";
 		let persist = self.get_persist();
 		if persist != Some(0) {
 			if persist.is_none() {
