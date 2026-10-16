@@ -1,6 +1,6 @@
 [package]
 name = "batlimit"
-version = "0.13.5"
+version = "0.13.6"
 edition = "2024"
 rust-version = "1.85.1"
 authors = ["github.com/pepa65 <pepa65@passchier.net>"]

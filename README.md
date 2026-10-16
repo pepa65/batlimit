@@ -5,7 +5,7 @@
 [![license](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://github.com/pepa65/batlimit/blob/main/LICENSE)
 [![downloads](https://img.shields.io/crates/d/batlimit.svg)](https://crates.io/crates/batlimit)
 
-# batlimit 0.13.5
+# batlimit 0.13.6
 **Set battery charge limit on supported laptops on Linux with CLI**
 
 It is now widely acknowledged that the life span of Li-ion batteries is extended by not charging them to the max.
@@ -95,7 +95,7 @@ Install the musl binary: `cargo-binstall batlimit`
 
 ## Usage
 ```
-batlimit 0.13.5 - Set battery charge limit on supported laptops on Linux with CLI
+batlimit 0.13.6 - Set battery charge limit on supported laptops on Linux with CLI
 Usage: batlimit [COMMAND]
 Commands:
   info       Print battery info (default command)
